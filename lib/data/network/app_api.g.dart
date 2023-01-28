@@ -23,6 +23,7 @@ class _AppServiceClient implements AppServiceClient {
     sign,
     password,
     deviceId,
+    userDeviceTypeId,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -30,6 +31,7 @@ class _AppServiceClient implements AppServiceClient {
       'sign': sign,
       'password': password,
       'deviceId': deviceId,
+      'userDeviceTypeId': userDeviceTypeId,
     };
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AuthenticationResponse>(Options(

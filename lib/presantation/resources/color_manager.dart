@@ -13,6 +13,7 @@ class ColorManager {
   static Color dark = HexColor.fromHex("#2D033B");
 
   static Color kPrimaryColor = HexColor.fromHex("#006064");
+  static Color SecondaryColor = HexColor.fromHex("##e3fcfc");
 
   //beyazı ekle
   //birkaç renk ekle

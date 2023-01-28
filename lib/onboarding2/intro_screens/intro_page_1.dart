@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presantation/resources/assets_manager.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
 import 'package:lottie/lottie.dart';
 
@@ -20,8 +21,7 @@ class IntroPage1 extends StatelessWidget {
                   "Bütün karavan servislerine ulaşabileceğiniz, Servis hizmeti alabileceğiniz, Aldığınız hizmetlerin takibini sağlayabileceğiniz",
                   style: TextStyle(fontSize: 18),
                 ),
-                Lottie.network(
-                    'https://assets3.lottiefiles.com/private_files/lf30_d92kodgw.json'),
+                Lottie.asset(JsonAssets.karavan),
               ],
             ),
           ),

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_application_1/app/di.dart';
 import 'package:flutter_application_1/domain/home/main_page.dart';
+import 'package:flutter_application_1/presantation/onboarding/onboarding.dart';
+import 'package:flutter_application_1/onboarding2/onboarding_screen.dart';
 import 'package:flutter_application_1/presantation/register/register_view.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer_impl.dart';
@@ -201,6 +203,20 @@ class _LoginViewState extends State<LoginView> {
                       },
                       child: Text(
                         "Üye Olmak İçin Tıklayınız",
+                        style: TextStyle(color: ColorManager.kPrimaryColor),
+                      )),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OnBoardingView()));
+                      },
+                      child: Text(
+                        "On Boarding",
                         style: TextStyle(color: ColorManager.kPrimaryColor),
                       )),
                 ),

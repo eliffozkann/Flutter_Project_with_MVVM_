@@ -57,8 +57,8 @@ class LoginViewModel extends BaseViewModel
         LoadingState(stateRendererType: StateRendererType.POPUP_LOADING_STATE));
 
     //_loginUseCase.girişyap ya da kayıtol fonksiyonları gibi düşünülebilir.
-    (await _loginUseCase.execute(LoginUseCaseInput(
-            loginViewObject.username, loginViewObject.password, "deviceId123")))
+    (await _loginUseCase.execute(LoginUseCaseInput(loginViewObject.username,
+            loginViewObject.password, "deviceId123", 2)))
         //fold yapısında iki yol var gibi düşünebilirsiniz hatalı olursa left başarılı olursa right
         .fold(
             (failure) => {

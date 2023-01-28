@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/app_prefs.dart';
 import 'package:flutter_application_1/app/di.dart';
+import 'package:flutter_application_1/presantation/login/login_view.dart';
 import 'package:flutter_application_1/presantation/onboarding/onboarding_viewmodel.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
+import 'package:lottie/lottie.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -12,6 +16,9 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
+  bool onLastPage = false;
+  bool onFirstPage = false;
+
   PageController _pageController = PageController(initialPage: 0);
   OnBoardingViewModel _viewModel = OnBoardingViewModel();
 
@@ -37,7 +44,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ColorManager.primary,
+        backgroundColor: ColorManager.SecondaryColor,
         body: StreamBuilder<OnboardingObject>(
           stream: _viewModel.outputOnboardingObject,
           builder: (context, snapshot) {
@@ -51,12 +58,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       return const SizedBox.shrink();
     } else {
       return Scaffold(
-          backgroundColor: ColorManager.primary,
+          backgroundColor: ColorManager.SecondaryColor,
           body: SafeArea(
             child: PageView.builder(
               itemCount: onboardingObject.numberOfSlide,
               controller: _pageController,
               onPageChanged: (value) async {
+                onLastPage = (value == 2);
+                onFirstPage = (value == 1 || value == 2);
                 const Duration(milliseconds: 0);
                 _viewModel.onPageChanged(value);
               },
@@ -64,17 +73,86 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(child: Text(onboardingObject.sliderObject.title)),
+                    //Expanded(child: Text(onboardingObject.sliderObject.title)),
                     Expanded(
-                      child: Image(
-                        height: MediaQuery.of(context).size.height / 2.5,
-                        width: MediaQuery.of(context).size.width / 1.15,
-                        image:
-                            AssetImage(onboardingObject.sliderObject.imageUrl),
+                        flex: 4,
+                        child: Lottie.asset(
+                          onboardingObject.sliderObject.imageUrl,
+                          width: MediaQuery.of(context).size.width / 1.15,
+                          height: MediaQuery.of(context).size.height / 2.5,
+                        )),
+                    Expanded(
+                        flex: 2,
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          onboardingObject.sliderObject.subtitle,
+                          style: GoogleFonts.roboto(
+                            textStyle: Theme.of(context).textTheme.headline4,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        )),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          onFirstPage
+                              ? GestureDetector(
+                                  onTap: () {
+                                    _pageController.previousPage(
+                                        duration:
+                                            const Duration(milliseconds: 200),
+                                        curve: Curves.easeIn);
+                                  },
+                                  child: const Text("Back",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15)))
+                              : GestureDetector(
+                                  onTap: () {}, child: const Text(" ")),
+                          SmoothPageIndicator(
+                              effect: WormEffect(
+                                  activeDotColor: ColorManager.kPrimaryColor),
+                              controller: _pageController,
+                              count: 3),
+                          onLastPage
+                              ? GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return const LoginView();
+                                    }));
+                                  },
+                                  child: const Text("Done",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15)))
+                              : GestureDetector(
+                                  onTap: () {
+                                    _pageController.nextPage(
+                                        duration:
+                                            const Duration(milliseconds: 200),
+                                        curve: Curves.easeIn);
+                                  },
+                                  child: const Text(
+                                    "Next",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  )),
+                        ],
                       ),
                     ),
-                    Expanded(
-                        child: Text(onboardingObject.sliderObject.subtitle))
+                    // Expanded(
+                    //   flex: 1,
+                    //   child: SmoothPageIndicator(
+                    //       effect: WormEffect(
+                    //           activeDotColor: ColorManager.kPrimaryColor),
+                    //       controller: _pageController,
+                    //       count: 3),
+                    // ),
                   ],
                 );
               },

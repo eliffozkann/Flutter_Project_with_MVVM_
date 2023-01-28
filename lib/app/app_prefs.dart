@@ -9,7 +9,8 @@ class AppPreferences {
   AppPreferences(this._sharedPreferences);
 
   Future<void> setOnboardingScreenViewed() async {
-    _sharedPreferences.setBool(PREFS_KEY_ONBOARDING_SCREEN, true);
+    _sharedPreferences.setBool(PREFS_KEY_ONBOARDING_SCREEN,
+        true); //kullanıcı on boarding ekranını gördü mü?
   }
 
   Future<bool> isOnboardingScreenViewed() async {

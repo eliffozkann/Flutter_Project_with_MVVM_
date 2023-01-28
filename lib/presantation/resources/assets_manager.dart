@@ -12,4 +12,9 @@ class JsonAssets {
   static const String registerPageCongratulation =
       "$JSON_PATH/congratulations.json";
   static const String registerPageWrong = "$JSON_PATH/wrong.json";
+
+  static const String karavan = "$JSON_PATH/karavan.json";
+  static const String hosgeldin = "$JSON_PATH/hosgeldin.json";
+  static const String welcomeHands = "$JSON_PATH/welcomeHands.json";
+  static const String caravanLoader = "$JSON_PATH/caravanLoader.json";
 }

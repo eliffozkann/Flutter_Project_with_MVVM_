@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_application_1/domain/model/slider_object.dart';
 import 'package:flutter_application_1/presantation/base/base_viewmodel.dart';
+import 'package:flutter_application_1/presantation/resources/assets_manager.dart';
 
 class OnBoardingViewModel extends BaseViewModel
     with OnboardingViewModelInputs, OnboardingViewModelOutputs {
@@ -23,10 +24,12 @@ class OnBoardingViewModel extends BaseViewModel
   }
 
   List<SliderObject> _getSliderData() => [
-        SliderObject(
-            "132132.Sayfa", "assets/images/78.jpg", "1. sayfa açıklaması"),
-        SliderObject("2.Sayfa", "assets/images/79.jpg", "2. sayfa açıklaması"),
-        SliderObject("3.Sayfa", "assets/images/79.jpg", "3.sayfa açıklaması"),
+        SliderObject("1. Sayfa", JsonAssets.caravanLoader,
+            "Yapacağın tatil için herhangi bir aracın yeterli olduğunu düşünebilirsin. Fakat..."),
+        SliderObject("2.Sayfa", JsonAssets.karavan,
+            "CaravanApp ile yolları evin haline getirebilir, tatilini en konforlu şekilde geçirebilirsin."),
+        SliderObject("3.Sayfa", JsonAssets.welcomeHands,
+            "Çeşit çeşit karavanı keşfetmeye hazırsan, CaravanApp'e Hoşgeldin"),
       ];
 
   @override

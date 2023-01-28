@@ -11,8 +11,8 @@ class LoginUseCase implements BaseUseCase<LoginUseCaseInput, Authentication> {
 
   @override
   Future<Either<Failure, Authentication>> execute(LoginUseCaseInput input) {
-    return _repository
-        .login(LoginRequest(input.sign, input.password, input.deviceId));
+    return _repository.login(LoginRequest(
+        input.sign, input.password, input.deviceId, input.userDeviceTypeId));
   }
 }
 
@@ -20,6 +20,8 @@ class LoginUseCaseInput {
   String sign;
   String password;
   String deviceId;
+  int userDeviceTypeId;
 
-  LoginUseCaseInput(this.sign, this.password, this.deviceId);
+  LoginUseCaseInput(
+      this.sign, this.password, this.deviceId, this.userDeviceTypeId);
 }

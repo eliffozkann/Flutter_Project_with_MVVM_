@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presantation/login/login_view.dart';
 import 'package:flutter_application_1/presantation/onboarding/onboarding.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
-import 'package:flutter_application_1/presantation/resources/intro_screens/intro_page_1.dart';
-import 'package:flutter_application_1/presantation/resources/intro_screens/intro_page_2.dart';
+import 'package:flutter_application_1/onboarding2/intro_screens/intro_page_1.dart';
+import 'package:flutter_application_1/onboarding2/intro_screens/intro_page_2.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -57,7 +58,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return const OnBoardingView();
+                            return const LoginView();
                           }));
                         },
                         child: const Text("Done",

@@ -4,6 +4,7 @@ import 'dart:ffi';
 
 import 'package:flutter_application_1/domain/usecases/login_usecase.dart';
 import 'package:flutter_application_1/presantation/freezed/freezed_data_classes.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer_impl.dart';
 import 'package:flutter_application_1/presantation/base/base_viewmodel.dart';
@@ -70,7 +71,7 @@ class LoginViewModel extends BaseViewModel
             (failure) => {
                   //hata kısmı
                   inputState.add(ErrorState(StateRendererType.POPUP_ERROR_STATE,
-                      "Giriş Yaparken Hata Oluştu"))
+                      AppStrings.errorLogin))
                 }, (data) {
       inputState.add(ContentState());
       isUserLoginInSuccessfullyStreamController.add(true);
@@ -117,15 +118,12 @@ class LoginViewModel extends BaseViewModel
 //outputs
 
   @override
-  Stream<String?> get outputErrorPassword =>
-      outputIsPasswordValid.map((isPasswordValid) =>
-          isPasswordValid ? null : "Şifreniz 3 Haneden Büyük Olmalı !!!");
+  Stream<String?> get outputErrorPassword => outputIsPasswordValid.map(
+      (isPasswordValid) => isPasswordValid ? null : AppStrings.passwordMessage);
 
   @override
-  Stream<String?> get outputErrorUsername =>
-      outputIsUsernameValid.map((isUsernameValid) => isUsernameValid
-          ? null
-          : "Kullanıcı Adınız 3 Haneden Büyük Olmalı !!!");
+  Stream<String?> get outputErrorUsername => outputIsUsernameValid.map(
+      (isUsernameValid) => isUsernameValid ? null : AppStrings.usernameMessage);
 
   @override
   Stream<bool> get outputIsPasswordValid => _passwordStreamController.stream

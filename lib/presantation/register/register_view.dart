@@ -7,6 +7,7 @@ import 'package:flutter_application_1/domain/home/main_page.dart';
 import 'package:flutter_application_1/presantation/login/login_view.dart';
 import 'package:flutter_application_1/presantation/register/register_viewmodel.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer_impl.dart';
 
@@ -115,7 +116,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   const Spacer(flex: 5),
                   Text(
-                    "Yeni Kullanıcı",
+                    AppStrings.newUser,
                     style: TextStyle(
                         color: ColorManager.kPrimaryColor,
                         fontWeight: FontWeight.bold,
@@ -142,8 +143,8 @@ class _RegisterViewState extends State<RegisterView> {
                                     border: OutlineInputBorder(
                                         borderRadius:
                                             BorderRadius.circular(30)),
-                                    labelText: "Kullanıcı Adı",
-                                    hintText: "Kullanıcı Adı",
+                                    labelText: AppStrings.username,
+                                    hintText: AppStrings.username,
                                     errorText: snapshot.data),
                               );
                             }),
@@ -188,8 +189,8 @@ class _RegisterViewState extends State<RegisterView> {
                                                   .add(!visibility.data!);
                                             },
                                           ),
-                                          hintText: "Şifre",
-                                          labelText: "Şifre",
+                                          hintText: AppStrings.password,
+                                          labelText: AppStrings.password,
                                           errorText: snapshot.data),
                                     );
                                   });
@@ -236,8 +237,8 @@ class _RegisterViewState extends State<RegisterView> {
                                                   .add(!visibility.data!);
                                             },
                                           ),
-                                          hintText: "Şifreyi tekrar girin",
-                                          labelText: "Şifreyi tekrar girin",
+                                          hintText: AppStrings.passwordAgain,
+                                          labelText: AppStrings.passwordAgain,
                                           errorText: snapshot.data),
                                     );
                                   });
@@ -255,15 +256,11 @@ class _RegisterViewState extends State<RegisterView> {
                             if (_passwordTextEditingController.text ==
                                 _passwordTextEditingControllerAgain.text) {
                               _viewModel.register();
-                              print("KAYIT BAŞARILI");
                             } else {
                               _viewModel.registerError();
-                              print("başarılı değil");
-                              print(_passwordTextEditingController.text);
-                              print(_passwordTextEditingControllerAgain.text);
                             }
                           },
-                          child: const Text("Kayıt Ol"))),
+                          child: const Text(AppStrings.register))),
                 ],
               ),
             ),

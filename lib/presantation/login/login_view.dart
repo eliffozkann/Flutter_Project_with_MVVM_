@@ -8,6 +8,7 @@ import 'package:flutter_application_1/presantation/onboarding/onboarding.dart';
 import 'package:flutter_application_1/onboarding2/onboarding_screen.dart';
 import 'package:flutter_application_1/presantation/register/register_view.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer_impl.dart';
 import 'package:flutter_application_1/presantation/login/login_viewmodel.dart';
 import 'package:lottie/lottie.dart';
@@ -99,7 +100,7 @@ class _LoginViewState extends State<LoginView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Giriş Ekranı",
+                        AppStrings.loginScreen,
                         style: TextStyle(
                             color: ColorManager.kPrimaryColor,
                             fontWeight: FontWeight.bold,
@@ -128,8 +129,8 @@ class _LoginViewState extends State<LoginView> {
                                   ),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30)),
-                                  labelText: "Kullanıcı Adı",
-                                  hintText: "Kullanıcı Adı",
+                                  labelText: AppStrings.username,
+                                  hintText: AppStrings.username,
                                   errorText: snapshot.data),
                             );
                           }),
@@ -173,8 +174,8 @@ class _LoginViewState extends State<LoginView> {
                                                 .add(!visibility.data!);
                                           },
                                         ),
-                                        hintText: "Şifre",
-                                        labelText: "Şifre",
+                                        hintText: AppStrings.password,
+                                        labelText: AppStrings.password,
                                         errorText: snapshot.data),
                                   );
                                 });
@@ -191,7 +192,7 @@ class _LoginViewState extends State<LoginView> {
                               borderRadius: BorderRadius.circular(30.0)),
                           backgroundColor: ColorManager.kPrimaryColor,
                         ),
-                        child: const Text("Giriş Yap"))),
+                        child: const Text(AppStrings.login))),
                 Expanded(
                   flex: 3,
                   child: TextButton(
@@ -202,24 +203,24 @@ class _LoginViewState extends State<LoginView> {
                                 builder: (context) => RegisterView()));
                       },
                       child: Text(
-                        "Üye Olmak İçin Tıklayınız",
+                        AppStrings.registerText,
                         style: TextStyle(color: ColorManager.kPrimaryColor),
                       )),
                 ),
-                Expanded(
-                  flex: 3,
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => OnBoardingView()));
-                      },
-                      child: Text(
-                        "On Boarding",
-                        style: TextStyle(color: ColorManager.kPrimaryColor),
-                      )),
-                ),
+                // Expanded(
+                //   flex: 3,
+                //   child: TextButton(
+                //       onPressed: () {
+                //         Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) => OnBoardingView()));
+                //       },
+                //       child: Text(
+                //         "On Boarding",
+                //         style: TextStyle(color: ColorManager.kPrimaryColor),
+                //       )),
+                // ),
               ],
             ),
           ),

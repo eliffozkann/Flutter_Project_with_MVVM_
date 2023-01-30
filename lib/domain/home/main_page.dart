@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_application_1/app/di.dart';
 import 'package:flutter_application_1/presantation/login/login_viewmodel.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -26,7 +27,8 @@ class _MainPageState extends State<MainPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text("Karavan Tipleri")),
+          automaticallyImplyLeading: false,
+          title: const Center(child: Text(AppStrings.caravanTypes)),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -36,7 +38,7 @@ class _MainPageState extends State<MainPage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    "Lütfen karavan tipi seçiniz:",
+                    AppStrings.selectCaravanType,
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           fontSize: 20,
                         ),

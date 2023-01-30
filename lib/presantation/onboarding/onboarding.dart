@@ -4,6 +4,7 @@ import 'package:flutter_application_1/app/di.dart';
 import 'package:flutter_application_1/presantation/login/login_view.dart';
 import 'package:flutter_application_1/presantation/onboarding/onboarding_viewmodel.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -73,7 +74,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    //Expanded(child: Text(onboardingObject.sliderObject.title)),
                     Expanded(
                         flex: 4,
                         child: Lottie.asset(
@@ -87,9 +87,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                           textAlign: TextAlign.center,
                           onboardingObject.sliderObject.subtitle,
                           style: GoogleFonts.roboto(
-                            textStyle: Theme.of(context).textTheme.headline4,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
+                            textStyle:
+                                Theme.of(context).textTheme.headlineSmall,
+                            fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic,
                           ),
                         )),
@@ -106,12 +106,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                             const Duration(milliseconds: 200),
                                         curve: Curves.easeIn);
                                   },
-                                  child: const Text("Back",
+                                  child: const Text(AppStrings.back,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)))
-                              : GestureDetector(
-                                  onTap: () {}, child: const Text(" ")),
+                              : const Text(" "),
                           SmoothPageIndicator(
                               effect: WormEffect(
                                   activeDotColor: ColorManager.kPrimaryColor),
@@ -125,7 +124,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                       return const LoginView();
                                     }));
                                   },
-                                  child: const Text("Done",
+                                  child: const Text(AppStrings.getStart,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)))
@@ -137,7 +136,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                         curve: Curves.easeIn);
                                   },
                                   child: const Text(
-                                    "Next",
+                                    AppStrings.next,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15),
@@ -145,14 +144,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         ],
                       ),
                     ),
-                    // Expanded(
-                    //   flex: 1,
-                    //   child: SmoothPageIndicator(
-                    //       effect: WormEffect(
-                    //           activeDotColor: ColorManager.kPrimaryColor),
-                    //       controller: _pageController,
-                    //       count: 3),
-                    // ),
                   ],
                 );
               },

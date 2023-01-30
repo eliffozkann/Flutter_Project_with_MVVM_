@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_1/domain/usecases/register_usecase.dart';
 import 'package:flutter_application_1/presantation/freezed/freezed_data_classes.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer_impl.dart';
 import 'package:flutter_application_1/presantation/base/base_viewmodel.dart';
@@ -67,7 +68,7 @@ class RegisterViewModel extends BaseViewModel
         .fold(
             (failure) => {
                   inputState.add(ErrorState(StateRendererType.POPUP_ERROR_STATE,
-                      "Kayıt Olurken Hata Oluştu"))
+                      AppStrings.errorRegister))
                 }, (data) {
       inputState.add(LoadingState(
           stateRendererType: StateRendererType.REGISTER_PAGE_CONGRATULATIONS));
@@ -79,7 +80,7 @@ class RegisterViewModel extends BaseViewModel
   @override
   registerError() async {
     inputState.add(ErrorState(
-        StateRendererType.REGISTER_PAGE_ERROR, "Kayıt Olurken Hata Oluştu"));
+        StateRendererType.REGISTER_PAGE_ERROR, AppStrings.errorRegister));
   }
 
   @override
@@ -123,15 +124,12 @@ class RegisterViewModel extends BaseViewModel
 //outputs
 
   @override
-  Stream<String?> get outputErrorPassword =>
-      outputIsPasswordValid.map((isPasswordValid) =>
-          isPasswordValid ? null : "Şifreniz 3 Haneden Büyük Olmalı !!!");
+  Stream<String?> get outputErrorPassword => outputIsPasswordValid.map(
+      (isPasswordValid) => isPasswordValid ? null : AppStrings.passwordMessage);
 
   @override
-  Stream<String?> get outputErrorUsername =>
-      outputIsUsernameValid.map((isUsernameValid) => isUsernameValid
-          ? null
-          : "Kullanıcı Adınız 3 Haneden Büyük Olmalı !!!");
+  Stream<String?> get outputErrorUsername => outputIsUsernameValid.map(
+      (isUsernameValid) => isUsernameValid ? null : AppStrings.usernameMessage);
 
   @override
   Stream<bool> get outputIsPasswordValid => _passwordStreamController.stream

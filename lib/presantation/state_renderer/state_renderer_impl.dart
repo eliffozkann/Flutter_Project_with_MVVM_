@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 import 'package:flutter_application_1/presantation/state_renderer/state_renderer.dart';
 
 // Hangi state renderer type ekranda gösterecek onu belirliyor.
@@ -27,7 +27,7 @@ class LoadingState extends FlowState {
   String message;
 
   LoadingState({required this.stateRendererType, String? message})
-      : message = message ?? "Yükleniyor";
+      : message = message ?? AppStrings.loading;
 
   @override
   String getMesagge() => message;

@@ -5,7 +5,7 @@ class LoginRequest {
   String deviceId;
   int userDeviceTypeId;
 
-  LoginRequest(this.password, this.sign, this.deviceId, this.userDeviceTypeId);
+  LoginRequest(this.sign, this.password, this.deviceId, this.userDeviceTypeId);
 }
 
 class RegisterRequest {

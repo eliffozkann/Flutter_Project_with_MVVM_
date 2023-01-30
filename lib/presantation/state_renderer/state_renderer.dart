@@ -3,6 +3,7 @@ import 'package:flutter_application_1/presantation/login/login_view.dart';
 import 'package:flutter_application_1/presantation/register/register_view.dart';
 import 'package:flutter_application_1/presantation/resources/assets_manager.dart';
 import 'package:flutter_application_1/presantation/resources/color_manager.dart';
+import 'package:flutter_application_1/presantation/resources/strings_manager.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:lottie/lottie.dart';
 
@@ -32,7 +33,7 @@ class StateRenderer extends StatelessWidget {
       String? message,
       String? title,
       required this.retryFunction})
-      : message = message ?? "Yükleniyor",
+      : message = message ?? AppStrings.loading,
         title = title ?? "",
         super(key: key);
 
@@ -45,25 +46,25 @@ class StateRenderer extends StatelessWidget {
     switch (stateRendererType) {
       case StateRendererType.POPUP_LOADING_STATE:
         return _getPopUpDialog(context, [
-          _getText("Loading...", context),
+          _getText(AppStrings.loading, context),
           _getAnimatedErrorLottie(JsonAssets.loading, context)
         ]);
 
       case StateRendererType.POPUP_ERROR_STATE:
         return _getPopUpDialog(context, [
-          _getText("Error", context),
+          _getText(AppStrings.error, context),
           _getAnimatedErrorLottie(JsonAssets.error, context)
         ]);
 
       case StateRendererType.FULL_SCREEN_LOADING_STATE:
         return _getItemsFullScreen([
-          _getText("Loading...", context),
+          _getText(AppStrings.loading, context),
           _getAnimatedLoadingLottie(JsonAssets.fullPageLoading, context)
         ], context);
 
       case StateRendererType.FULL_SCREEN_ERROR_STATE:
         return _getItemsFullScreen([
-          _getText("Error", context),
+          _getText(AppStrings.error, context),
           _getAnimatedErrorLottie(JsonAssets.error, context)
         ], context);
 
@@ -72,21 +73,21 @@ class StateRenderer extends StatelessWidget {
 
       case StateRendererType.EMPTY_SCREEN_STATE:
         return _getItemsFullScreen([
-          _getText("Not Found", context),
+          _getText(AppStrings.notfound, context),
           _getAnimatedErrorLottie(JsonAssets.notFound, context)
         ], context);
 
       case StateRendererType.REGISTER_PAGE_CONGRATULATIONS:
         return _getPopUpDialog(context, [
-          _getText("Kayıt Başarılı", context),
+          _getText(AppStrings.succesfulRegister, context),
           _getAnimatedErrorLottie(
               JsonAssets.registerPageCongratulation, context),
-          _getButton("Giriş Yap", LoginView(), context)
+          _getButton(AppStrings.login, LoginView(), context)
         ]);
 
       case StateRendererType.REGISTER_PAGE_ERROR:
         return _getPopUpDialog(context, [
-          _getText("Şifreler Uyuşmuyor !! Tekrar deneyiniz !", context),
+          _getText(AppStrings.registerPasswordError, context),
           _getAnimatedErrorLottie(JsonAssets.registerPageWrong, context),
         ]);
 

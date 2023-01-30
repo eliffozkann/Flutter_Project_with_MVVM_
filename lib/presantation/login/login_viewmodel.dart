@@ -51,6 +51,12 @@ class LoginViewModel extends BaseViewModel
   }
 
   @override
+  loading() async {
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.POPUP_LOADING_STATE));
+  }
+
+  @override
   login() async {
     //login butonuna basıldığında ekrana loading popupını getiriyoruz.
     inputState.add(
@@ -136,6 +142,7 @@ class LoginViewModel extends BaseViewModel
 
 abstract class LoginViewModelInput {
   login();
+  loading();
 
   //freezed
   setUsername(String username);

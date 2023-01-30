@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "image": "https://user-images.githubusercontent.com/111922323/215491780-e0546bf1-049c-4e31-8db1-69609a2127a8.jpg",
+      "productName":  "Motokaravan"
+    },
+    {
+      "id": 2,
+      "image": "https://user-images.githubusercontent.com/111922323/215491996-0eec95bb-c51d-47c2-bf8d-07dfcbcf9caf.jpg",
+      "productName":  "Çekme Karavan"
+    },
+    {
+      "id": 3,
+      "image": "https://user-images.githubusercontent.com/111922323/215492024-3317e5b5-8433-4695-a5ed-1fc081574bbc.jpg",
+      "productName":  "Araç + Çekme Karavan"
+    },
+    {
+      "id": 4,
+      "image": "https://user-images.githubusercontent.com/111922323/215492055-c5a8b362-7e94-4044-854e-8100b856b630.jpg",
+      "productName":  "Araçüstü Çadır"
+    },
+    {
+      "id": 5,
+      "image": "https://user-images.githubusercontent.com/111922323/215492064-002a364a-21cb-4a59-a8b3-a191698aed70.jpeg",
+      "productName":  "Off-Road Karavan"
+    }
+  ]

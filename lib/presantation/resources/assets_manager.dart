@@ -1,6 +1,5 @@
 const String IMAGE_PATH = "assets/images/";
 const String JSON_PATH = "assets/json_assets";
-const String GIF_PATH = "assets/gif";
 
 class ImageAssets {}
 

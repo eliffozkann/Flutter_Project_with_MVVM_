@@ -13,3 +13,5 @@ https://user-images.githubusercontent.com/111922323/216811404-08b68284-b429-44f3
 - Freezed,
 - Dartz,
 - JsonSerializable
+
+# flutter pub run build_runner watch --delete-conflicting-outputs
